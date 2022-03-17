@@ -1,41 +1,41 @@
-var nr_btn = 1;
-let winningBtn = 0,
-	value = 0;
+var nr_btn = 0;
+let winningBtn = 0,	value = 0;
 
 function addBtnPlay() {
 	if (value == 0) {
 		var val = 3;
 		while (val) {
-			$('#lists').append('<div class = "btn" id = "' + nr_btn + '"> <button type="button" class="btn btn-success las la-smile" onclick = "return WinnigButton();">Click </button></div>');
-			--val;
 			++nr_btn;
+			document.getElementById("lists").innerHTML += '<button type="button"  id ="' + nr_btn + '" class="btn btn-success" onClick = "WinnigButton(this.id)">Click </button>' + "  ";
+			--val;
 		}
-		--nr_btn;
-		winningBtn = Math.floor(Math.random() * nr_btn) + 1;
+		winningBtn = Math.floor(Math.random() * (nr_btn - 1 + 1) + 1);
 		++value;
 	}
 }
 
 function addButtons() {
-	var nr = $('#number_entered').val();
+	var nr = document.getElementById("number_entered").value;
 	while (nr) {
-		$('#lists_buttons').append('<div class = "btn" id = "' + nr_btn + '"> <button type="button" class="btn btn-success las la-smile" onclick = "return WinnigButton();">Click</button></div>');
+			document.getElementById("lists_buttons").innerHTML += '<button type="button"  id ="' + nr_btn + '" class="btn btn-success" onClick = "WinnigButton(this.id)">Click </button>' + " ";
 		--nr;
 		++nr_btn;
 	}
 	--nr_btn;
-	winningBtn = Math.floor(Math.random() * nr_btn) + 1;
+	winningBtn = Math.floor(Math.random() * (nr_btn - 1 + 1) + 1);
 }
 
-function WinnigButton() {
-	if (winningBtn == $('#nr_btn').val()) {
+function WinnigButton(clicked_id) {
+	if (winningBtn == clicked_id) {
 		window.alert("winner");
+		winningBtn = Math.floor(Math.random() * (nr_btn - 1 + 1) + 1);
 	} else {
 		window.alert("loser");
+		winningBtn = Math.floor(Math.random() * (nr_btn - 1 + 1) + 1);
 	}
 }
 
 function refreshPage() {
 	location.reload();
-	nr_btn = 1;
+	nr_btn = 0;
 }
