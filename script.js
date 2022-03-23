@@ -1,5 +1,5 @@
 var nr_btn = 0;
-let winningBtn = 0,	value = 0;
+var winningBtn = 0, value = 0;
 
 function addBtnPlay() {
 	if (value == 0) {
@@ -17,7 +17,7 @@ function addBtnPlay() {
 function addButtons() {
 	var nr = document.getElementById("number_entered").value;
 	while (nr) {
-			document.getElementById("lists_buttons").innerHTML += '<button type="button"  id ="' + nr_btn + '" class="btn btn-success" onClick = "WinnigButton(this.id)">Click </button>' + " ";
+		document.getElementById("lists_buttons").innerHTML += '<button type="button"  id ="' + nr_btn + '" class="btn btn-success" onClick = "WinnigButton(this.id)">Click </button>' + " ";
 		--nr;
 		++nr_btn;
 	}
